@@ -3,6 +3,12 @@ Gets to 99.2% test accuracy after 12 epochs
 (there is still a lot of margin for parameter tuning).
 4 seconds per epoch on a GTX 1080 Ti.
 '''
+from os import environ
+# Select GPU 2 only
+environ['CUDA_DEVICE_ORDER']='PCI_BUS_ID'
+environ['CUDA_VISIBLE_DEVICES']='0'
+environ['MKL_THREADING_LAYER']='GNU'
+
 import argparse
 import torch
 import keras
@@ -13,13 +19,8 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.autograd import Variable
-from os import environ
 
-# Select GPU 2 only
-environ['CUDA_DEVICE_ORDER']='PCI_BUS_ID'
-environ['CUDA_VISIBLE_DEVICES']='2'
 USE_GPU = True
-
 batch_size = 128
 num_classes = 10
 epochs = 12
