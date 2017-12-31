@@ -29,3 +29,10 @@ python
 If you see a message like "Found device 0 with properties..." then you are set. See this link for additional information and debugging tips: https://docs.devicehive.com/v2.0/blog/using-gpus-for-training-tensorflow-models
 
 ## Pytorch
+Assumes `conda` env has been created and activated (e.g. `source activate ptenv`)
+
+Install `pytorch` with GPU acceleration with:
+```
+conda install pytorch torchvision -c pytorch
+```
+See this link (http://pytorch.org/) for more useful information on combinations like python, CUDA, and cuDNN versions.
