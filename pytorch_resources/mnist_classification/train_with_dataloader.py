@@ -212,6 +212,7 @@ for ep in range(epochs):
         epoch_loss += batch_loss
         train_accuracy += batch_accuracy
         counter += 1
+    train_accuracy = train_accuracy/counter
 
     # measure test performance per epoch
     num_correct = 0
@@ -225,4 +226,4 @@ for ep in range(epochs):
         counter += y_batch.shape[0]
     test_accuracy = 100.0 * num_correct / counter
     print("Epoch = %i | Train loss = %f | Train accuracy = %f | Test accuracy = %f | time = %f" %
-          (ep+1, epoch_loss/counter, train_accuracy/counter, test_accuracy, timer.time()-ts))
+          (ep+1, epoch_loss/counter, train_accuracy, test_accuracy, timer.time()-ts))
