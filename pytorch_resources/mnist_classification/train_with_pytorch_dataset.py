@@ -18,6 +18,7 @@ import torch.nn as nn
 import numpy as np
 import time as timer
 
+DATA_DIR = '~/data/'
 
 # hyperparameters
 # ---------------------------
@@ -33,17 +34,17 @@ epochs = 12
 # ---------------------------
 
 device = torch.device("cuda" if USE_GPU else "cpu")
-kwargs = {'num_workers': 1, 'pin_memory': True} if USE_GPU else {}
+kwargs = {'num_workers': 6, 'pin_memory': True} if USE_GPU else {}
 
 train_dataloader = torch.utils.data.DataLoader(
-    datasets.MNIST('./data', train=True, download=True,
+    datasets.MNIST(DATA_DIR, train=True, download=True,
                    transform=transforms.Compose([
                        transforms.ToTensor(),
                        transforms.Normalize((0.1307,), (0.3081,))
                    ])),
     batch_size=batch_size, shuffle=True, **kwargs)
 test_dataloader = torch.utils.data.DataLoader(
-    datasets.MNIST('./data', train=False, transform=transforms.Compose([
+    datasets.MNIST(DATA_DIR, train=False, transform=transforms.Compose([
                        transforms.ToTensor(),
                        transforms.Normalize((0.1307,), (0.3081,))
                    ])),
